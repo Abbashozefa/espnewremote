@@ -76,7 +76,11 @@
       try {
         const response = await fetch(`${espIp}${endpoint}`, {
           method: 'GET',
-           mode: 'no-cors'
+           mode: 'no-cors',
+          headers: {
+        'Content-Type': 'text/plain'
+      },
+      cache: 'no-store'
         });
 
         // Update status message based on action
