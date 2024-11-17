@@ -75,7 +75,8 @@
       const endpoint = action === 'ON' ? '/ON' : '/OFF';
       try {
         const response = await fetch(`${espIp}${endpoint}`, {
-          method: 'GET'
+          method: 'GET',
+           mode: 'no-cors'
         });
 
         // Update status message based on action
