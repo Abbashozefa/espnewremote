@@ -69,21 +69,24 @@
   <div class="status" id="status">Status: Waiting for action...</div>
 
   <script>
+    const espIp = 'https://ff85-49-205-37-142.ngrok-free.app/'; // Replace with your Ngrok URL
+
     async function sendRequest(action) {
-      const proxyUrl = 'http://localhost:3000';
       const endpoint = action === 'ON' ? '/ON' : '/OFF';
       try {
-        const response = await fetch(`${proxyUrl}${endpoint}`);
-        document.getElementById('status').innerText = 
+        const response = await fetch(`${espIp}${endpoint}`, {
+          method: 'GET'
+        });
+
+        // Update status message based on action
+        document.getElementById('status').innerText =
           action === 'ON' ? 'Status: Device Turned ON' : 'Status: Device Turned OFF';
       } catch (error) {
-        document.getElementById('status').innerText = 
+        document.getElementById('status').innerText =
           'Status: Failed to reach the ESP device';
         console.error('Error:', error);
       }
     }
   </script>
-  
 </body>
 </html>
-
